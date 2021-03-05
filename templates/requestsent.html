@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add friend
+{% endblock %}
+
+
+{% block heading %}
+    {% if existance == "false" %}
+        Request Failed
+    {% else %}
+        Success!
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if existance == "false" %}
+        <p>The user does not exist.</p>
+    {% elif sent_already == "true" %}
+        <p>You have already sent a friend request to this person.</p>
+    {% elif already_friends == "true" %}
+        <p>You are already friends with this person.</p>
+    {% else %}
+        <p>You sent the friend request successfully.</p>
+    {% endif %}
+    <form action="/addfriends" method="GET" style="display: inline;">
+        <button class="btn btn-link" type="submit" style="color: #f2800d; padding: 0;">Try another?</button>
+    </form>
+{% endblock %}

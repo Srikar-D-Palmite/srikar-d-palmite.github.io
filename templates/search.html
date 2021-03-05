@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block heading %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <p>Search for tags. Seperate key phrases with commas.</p>
+    <form action="/search" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="searchtag" placeholder="Enter <tagname>..." type="text" required>
+        </div>
+        <div style="text-align: center;">
+        <button class="btn btn-primary" type="submit" style="background-color: #004f99;">Search</button>
+        </div>
+    </form>
+{% endblock %}

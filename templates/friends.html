@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Friends
+{% endblock %}
+
+{% block heading %}
+    My Friends
+{% endblock %}
+
+{% block main %}
+    {% if friendslist == "none" %}
+        <p>You don't have any friends :/</p>
+        Invite friends
+        <form action="/seefriends" method="post" style="display: inline;">
+            <button class="btn btn-link" type="submit" style="color: #f2800d; padding: 0;">
+                here
+            </button>
+        </form>
+    {% else %}
+        <table style="border: 1px solid black;">
+            {% for friend in friendslist %}
+                <tr>
+                    <td style="text-align: center;">
+                        {{ friend }}
+                        <form action="/friendshistory" method="POST">
+                            <button class="btn btn-link" type="submit"
+                             style="color: #f2800d; padding: 0;" name="seehistory" value="{{ friend }}" title="See {{ friend }}'s history (they won't know;))">
+                                See Posts
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

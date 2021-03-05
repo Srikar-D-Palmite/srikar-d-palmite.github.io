@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Friend requests
+{% endblock %}
+
+{% block heading %}
+    Friend Requests
+{% endblock %}
+
+{% block main %}
+    {% if friends == "none" %}
+        No one wants to be your friend :/
+    {% else %}
+    <p>The following people want to be your friend:</p>
+    <table style="border: 1px solid black;">
+        {% for friend in friends %}
+            <tr>
+                <td style="text-align: center;">
+                    <p>{{ friend }}</p>
+                    <form action="/acceptfriends" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-link" style="padding: 0; color: #f2800d;" name="addfriend" value="{{ friend }}; accept">
+                            Accept
+                        </button>
+                        &nbsp
+                        <button type="submit" class="btn btn-link" style="padding: 0; color: #f2800d;" name="addfriend" value="{{ friend }}; deny">
+                            Deny
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}

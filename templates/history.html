@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post History
+{% endblock %}
+
+{% block heading %}
+    {% if friend %}
+        {{ friend }}'s Posts
+    {% else %}
+        My Posts
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if success == "true" %}
+        <p>Post/Deletion successful! Your post history is below:</p><br>
+    {% endif %}
+    <table>
+        {% if history != 0 %}
+            {% for row in history %}
+                <tr>
+                    <td><a href="https://{{ row['link'] }}" target="_blank" title="Go to https://{{ row["link"] }}">{{ row["link"] }}</a><br>
+                        {% if row["description"] %}
+                            <br>{{ row["description"] }}
+                        {% endif %}
+                        {% if row["tags"] %}
+                            <br>
+                            {% for tag in row["tags"].split(" ") %}
+                                <form action="/tagclick" method="post" style="display: inline;">
+                                    <button type="submit" class="btn btn-link" style="padding: 0;" name="tagname" value="{{ tag }}" title="Search this tag">
+                                        {{ tag }}
+                                    </button>
+                                </form>
+                            {% endfor %}
+                        {% endif %}
+                        &nbsp;&nbsp;&nbsp;&nbsp; Views: <span style="color: #f2800d;">{{ row['views'] }}</span>
+                    </td>
+                    <td style="text-align: right;">
+                        {{ row["time"] }} {{ row["date"] }}
+                        <br>
+                        {% if not friend %}
+                            <form action="/deletion" method="POST">
+                                <button type="submit" class="btn btn-link" style="padding: 0;" name="delete" value="{{ row['id'] }}" title="Delete this post">
+                                    Delete
+                                </button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            {% if friend %}
+                {{ friend }} hasn't posted yet.
+            {% else %}
+                You haven't posted yet. Click <a href="/post">Post</a> to post a link to the public.
+            {% endif %}
+        {% endif %}
+    </table>
+{% endblock %}

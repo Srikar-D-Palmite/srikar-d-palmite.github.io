@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %}
+    <script src="homescript.js"></script>
+{% endblock %}
+
+{% block heading %}
+    Welcome to Linkit!
+{% endblock %}
+
+{% block main %}
+    <p>The latest posts on linkit:</p><br>
+    <table style="border: 1px solid black;">
+        {% for row in latestposts %}
+            <tr>
+                <td><a href="https://{{ row['link'] }}" target="_blank" title="Go to https://{{ row["link"] }}">{{ row["link"] }}</a><br>
+                    {% if row["description"] %}
+                        <br>{{ row["description"] }}
+                    {% endif %}
+                    {% if row["tags"] %}
+                        <br>
+                        {% for tag in row["tags"].split(" ") %}
+                            <form action="/tagclick" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-link" style="padding: 0;" name="tagname" value="{{ tag }}" title="Search this tag">
+                                    {{ tag }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td style="text-align: right;">{{ row["date"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

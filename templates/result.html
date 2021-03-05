@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block heading %}
+    Search results:
+{% endblock %}
+
+{% block main %}
+    <table>
+        {% if not tabinfo[0] %}
+            Sorry. No results.
+        {% endif %}
+        {% for row in tabinfo %}
+            <tr>
+                <td><a href="https://{{ row['link'] }}" target="_blank" title="Go to https://{{ row["link"] }}">{{ row["link"] }}</a><br>
+                    {% if row["description"] %}
+                        <br>{{ row["description"] }}
+                    {% endif %}
+                    {% if row["tags"] %}
+                        <br>
+                        {% for tag in row["tags"].split(" ") %}
+                            <form action="/tagclick" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-link" style="padding: 0;" name="tagname" value="{{ tag }}" title="Search this tag">
+                                    {{ tag }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td style="text-align: right;">{{ row["date"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

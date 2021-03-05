@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Linkit: {% block title %}{% endblock %}</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <!--navbar-->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark border" style="background-color: #004f99;">
+            <a class="navbar-brand mb-0 h1" href="https://cs50.harvard.edu/x/2020/tracks/web/homepage/" target="_blank">CS50</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/history">My Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/post">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/seefriends">Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/addfriends">Add Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/acceptfriends">Friend Requests</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search">Search</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+        <h1 style="text-align: center; margin-top: 10px; width: 100%;">
+            <b>{% block heading %}{% endblock %}</b>
+        </h1>
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+        <div class="foot">
+            <footer style="font-size: small; color: #7e7e7e; width: 100%; bottom: 10px; text-align: center; position: fixed;">
+                &#169 Srikar 2020
+            </footer>
+        </div>
+    </body>
+</html>

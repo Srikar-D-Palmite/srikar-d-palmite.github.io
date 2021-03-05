@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add friend
+{% endblock %}
+
+
+{% block heading %}
+    Add a friend
+{% endblock %}
+
+{% block main %}
+    <p>Enter the username of the person you want to connect with.</p>
+    <form action="/addfriends" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="friend_username" placeholder="E.g. 'linkituser87'" type="text" title="Friend's username" required>
+        </div>
+        <div style="text-align: center;">
+            <button class="btn btn-primary" type="submit" style="background-color: #004f99;">Send Request</button>
+        </div>
+    </form>
+{% endblock %}
