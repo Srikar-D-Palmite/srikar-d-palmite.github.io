@@ -1,9 +1,11 @@
 import './App.css';
+import NavBar from './components/NavBar.js'
 
 function App() {
   return (
     <div className="App">
-    Srikar Tadeparti
+      <NavBar />
+      Srikar Tadeparti
     </div>
   );
 }
