@@ -1,45 +1,33 @@
 {
-  "name": "personal-site",
-  "version": "0.1.0",
-  "homepage": "https://srikar-d-palmite.github.io/",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.6",
-    "gh-pages": "^6.3.0",
-    "react": "^19.1.0",
-    "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "srikar-d-palmite.github.io",
+    "private": true,
+    "type": "module",
+    "homepage": "https://srikar-d-palmite.github.io/",
+    "scripts": {
+        "build": "react-router build",
+        "dev": "react-router dev",
+        "start": "react-router-serve ./build/server/index.js",
+        "typecheck": "react-router typegen && tsc",
+        "deploy": "gh-pages -d build"
+    },
+    "dependencies": {
+        "@react-router/node": "^7.5.3",
+        "@react-router/serve": "^7.5.3",
+        "isbot": "^5.1.27",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-router": "^7.5.3"
+    },
+    "devDependencies": {
+        "@react-router/dev": "^7.5.3",
+        "@tailwindcss/vite": "^4.1.4",
+        "@types/node": "^20",
+        "@types/react": "^19.1.2",
+        "@types/react-dom": "^19.1.2",
+        "gh-pages": "^6.3.0",
+        "tailwindcss": "^4.1.4",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.3",
+        "vite-tsconfig-paths": "^5.1.4"
+    }
 }
